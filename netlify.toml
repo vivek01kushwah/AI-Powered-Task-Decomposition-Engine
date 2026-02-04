@@ -1,0 +1,38 @@
+[build]
+  command = "npm run build"
+  functions = "netlify/functions"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "18.0.0"
+  NPM_VERSION = "9.0.0"
+
+[[redirects]]
+  from = "/api/*"
+  to = ".netlify/functions/api/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[context.production]
+  environment = { VITE_API_URL = "https://task-decomposition-api.railway.app" }
+
+[context.development]
+  environment = { VITE_API_URL = "http://localhost:5000" }
+
+[context.preview]
+  environment = { VITE_API_URL = "https://task-decomposition-api-staging.railway.app" }
+
+[dev]
+  command = "npm run dev"
+  port = 5173
+
+[[plugins]]
+  package = "@netlify/plugin-essential-builds"
+
+[functions]
+  node_bundler = "esbuild"
+  external_node_modules = ["express", "mongoose"]

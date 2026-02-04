@@ -1,0 +1,28 @@
+{
+  "image": {
+    "context": "backend",
+    "dockerfile": "Dockerfile"
+  },
+  "variables": {
+    "MONGODB_URI": {
+      "description": "MongoDB Atlas connection string",
+      "value": "${{ secrets.MONGODB_URI }}"
+    },
+    "JWT_SECRET": {
+      "description": "JWT signing secret (min 32 chars)",
+      "value": "${{ secrets.JWT_SECRET }}"
+    },
+    "NODE_ENV": {
+      "description": "Node environment",
+      "value": "production"
+    },
+    "PORT": {
+      "description": "Server port",
+      "value": "5000"
+    },
+    "CORS_ORIGIN": {
+      "description": "Frontend URL for CORS",
+      "value": "${{ secrets.FRONTEND_URL }}"
+    }
+  }
+}

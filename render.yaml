@@ -1,0 +1,39 @@
+services:
+  - type: web
+    name: task-decomposition-api
+    runtime: node
+    plan: standard
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 5000
+      - key: MONGODB_URI
+        fromDatabase:
+          name: mongodb
+          property: connectionString
+      - key: JWT_SECRET
+        sync: false
+      - key: CORS_ORIGIN
+        value: https://task-decomposition.vercel.app
+
+databases:
+  - name: mongodb
+    plan: standard
+    region: ohio
+    previewPlan: standard
+
+env:
+  NODE_VERSION: 18.0.0
+  NPM_VERSION: 9.0.0
+
+deploy:
+  fromRepo:
+    provider: github
+    owner: your-github-username
+    repo: task-decomposition
+    branch: main
+    rootDir: backend
+    autoRedeploy: true

@@ -1,0 +1,21 @@
+.App {
+  min-height: 100vh;
+}
+
+/* Add custom styling here */
+button {
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.task-card {
+  transition: box-shadow 0.3s ease;
+}
+
+.task-card:hover {
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}

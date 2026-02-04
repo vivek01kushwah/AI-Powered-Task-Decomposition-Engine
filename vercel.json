@@ -1,0 +1,21 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "installCommand": "npm install",
+  "env": {
+    "VITE_API_URL": "@vite_api_url",
+    "VITE_APP_NAME": "Task Decomposition Platform"
+  },
+  "regions": ["iad1"],
+  "functions": {
+    "api": {
+      "runtime": "nodejs18.x"
+    }
+  },
+  "redirects": [
+    {
+      "source": "/api/(.*)",
+      "destination": "${{ secrets.BACKEND_URL }}/api/$1"
+    }
+  ]
+}
