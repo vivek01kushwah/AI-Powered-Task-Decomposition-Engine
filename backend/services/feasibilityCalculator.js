@@ -184,7 +184,7 @@ function calculateFeasibility(tasks, constraints = {}) {
 
   return {
     success: true,
-    feasibilityScore: Math.round(feasibilityScore * 1000) / 1000,
+    feasibilityScore: isNaN(feasibilityScore) ? 0.5 : Math.round(feasibilityScore * 1000) / 1000,
     feasibilityLevel: feasibilityLevel,
     recommendation: recommendation,
     warnings: warnings,
