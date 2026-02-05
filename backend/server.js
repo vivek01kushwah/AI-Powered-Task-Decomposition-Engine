@@ -6,8 +6,16 @@ require('dotenv').config();
 
 const app = express();
 
+// CORS configuration with environment support
+const corsOptions = {
+  origin: process.env.CORS_ORIGIN || 'http://localhost:3000',
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+};
+
 // Middleware
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -24,7 +32,7 @@ app.use((err, req, res, next) => {
 // MongoDB Connection
 const connectDB = async () => {
   try {
-    await mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/task-decomposition-api', {
+    await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/task-decomposition-api', {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
