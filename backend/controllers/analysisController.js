@@ -29,6 +29,8 @@ const feasibilityCalculator = require('../services/feasibilityCalculator');
  */
 exports.analyzeProject = async (req, res) => {
   try {
+    console.log('📥 Received request body:', req.body);
+    
     const {
       description,
       teamSize = 5,
@@ -38,6 +40,8 @@ exports.analyzeProject = async (req, res) => {
       projectId,
       patternId
     } = req.body;
+
+    console.log('📋 Extracted description:', description);
 
     // Validate input
     if (!description || description.trim().length === 0) {
