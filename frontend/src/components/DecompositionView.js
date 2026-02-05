@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useParams } from 'react-router-dom';
 
 function DecompositionView() {
@@ -6,11 +6,7 @@ function DecompositionView() {
   const [decomposition, setDecomposition] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    fetchDecomposition();
-  }, [id]);
-
-  const fetchDecomposition = async () => {
+  const fetchDecomposition = useCallback(async () => {
     try {
       setLoading(true);
       const response = await fetch(`/api/decompositions/${id}`);
@@ -23,7 +19,11 @@ function DecompositionView() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [id]);
+
+  useEffect(() => {
+    fetchDecomposition();
+  }, [fetchDecomposition]);
 
   if (loading) {
     return <div className="text-center py-12">Loading...</div>;

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
 function TaskDetail({ onTaskUpdated }) {
@@ -9,11 +9,7 @@ function TaskDetail({ onTaskUpdated }) {
   const [isEditing, setIsEditing] = useState(false);
   const [formData, setFormData] = useState({});
 
-  useEffect(() => {
-    fetchTask();
-  }, [id]);
-
-  const fetchTask = async () => {
+  const fetchTask = useCallback(async () => {
     try {
       setLoading(true);
       const response = await fetch(`/api/tasks/${id}`);
@@ -27,7 +23,11 @@ function TaskDetail({ onTaskUpdated }) {
     } finally {
       setLoading(false);
     }
-  };
+  }, [id]);
+
+  useEffect(() => {
+    fetchTask();
+  }, [fetchTask]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { decomposeProject } from '../services/decompositionApi';
 import axios from 'axios';
 
 /**
@@ -106,10 +107,10 @@ export default function DecompositionForm({ onSubmit, isLoading }) {
         // deadline: formData.constraints.deadline || undefined  // COMMENTED OUT: NOT NEEDED
       };
 
-      const response = await axios.post('/api/decompose', requestData);
+      const response = await decomposeProject(requestData);
       
       if (onSubmit) {
-        onSubmit(response.data);
+        onSubmit(response);
       }
 
       // Reset form

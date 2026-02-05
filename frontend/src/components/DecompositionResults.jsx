@@ -10,7 +10,7 @@ export default function DecompositionResults({ results }) {
 
   // Handle both old and new response formats
   const data = results.data || results;
-  const feasibilityScore = data.feasibility?.score ?? data.feasibilityScore ?? 0;
+  // const feasibilityScore = data.feasibility?.score ?? data.feasibilityScore ?? 0;
   const tasks = data.decomposition?.tasks || data.tasks || [];
   const conflicts = data.contradictions?.contradictions || data.conflicts || [];
   const warnings = data.feasibility?.warnings || data.warnings || [];
