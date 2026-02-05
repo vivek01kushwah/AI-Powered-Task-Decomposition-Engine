@@ -32,7 +32,15 @@ app.use((err, req, res, next) => {
 // MongoDB Connection
 const connectDB = async () => {
   try {
-    await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/task-decomposition-api', {
+    const mongoUri = process.env.MONGODB_URI;
+    console.log('MONGODB_URI env var set:', !!mongoUri);
+    console.log('MONGODB_URI value:', mongoUri);
+    
+    if (!mongoUri) {
+      throw new Error('MONGODB_URI environment variable is not set');
+    }
+    
+    await mongoose.connect(mongoUri, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
