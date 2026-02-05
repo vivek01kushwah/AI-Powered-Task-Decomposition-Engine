@@ -198,6 +198,43 @@ const featureKeywords = {
     baseEstimate: 6,
     keywords: ['testing', 'test', 'unit', 'integration', 'e2e', 'qa']
   },
+
+  // AI & Machine Learning
+  'ai': {
+    category: 'ai-ml',
+    featureName: 'AI/ML Implementation',
+    taskTemplates: ['ai-design', 'ai-backend', 'ai-integration', 'ai-testing'],
+    baseEstimate: 10,
+    keywords: ['ai', 'artificial intelligence', 'machine learning', 'ml', 'ai-powered', 'intelligent', 'smart']
+  },
+  'ml': {
+    category: 'ai-ml',
+    featureName: 'Machine Learning',
+    taskTemplates: ['ml-design', 'ml-training', 'ml-backend', 'ml-integration'],
+    baseEstimate: 10,
+    keywords: ['machine learning', 'ml', 'model', 'neural', 'algorithm', 'classification', 'prediction']
+  },
+  'screening': {
+    category: 'ai-ml',
+    featureName: 'Screening/Filtering System',
+    taskTemplates: ['screening-design', 'screening-backend', 'screening-frontend', 'screening-testing'],
+    baseEstimate: 8,
+    keywords: ['screening', 'filter', 'filtering', 'classification', 'ranking', 'scoring']
+  },
+  'automation': {
+    category: 'backend',
+    featureName: 'Process Automation',
+    taskTemplates: ['automation-design', 'automation-backend', 'automation-testing'],
+    baseEstimate: 6,
+    keywords: ['automation', 'automate', 'automated', 'workflow', 'process']
+  },
+  'explainability': {
+    category: 'ai-ml',
+    featureName: 'Model Explainability',
+    taskTemplates: ['explainability-design', 'explainability-backend', 'explainability-frontend'],
+    baseEstimate: 6,
+    keywords: ['explainability', 'interpretable', 'transparent', 'transparency', 'explain', 'interpretability']
+  },
   'documentation': {
     category: 'documentation',
     featureName: 'Documentation',
