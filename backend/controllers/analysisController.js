@@ -65,6 +65,7 @@ exports.analyzeProject = async (req, res) => {
     
     let decompositionResult;
     try {
+      console.log('🔄 Calling taskDecomposer.decomposeProject()...');
       const result = taskDecomposer.decomposeProject(
         description,
         {
@@ -72,6 +73,7 @@ exports.analyzeProject = async (req, res) => {
           includeMetadata: true
         }
       );
+      console.log('✅ Decomposition result received:', result);
 
       // Handle both formats: { success, decomposition } and { tasks, ... }
       if (result.decomposition) {
