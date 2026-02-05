@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { decomposeProject } from '../services/decompositionApi';
-import axios from 'axios';
 
 /**
  * DecompositionForm Component
